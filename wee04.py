@@ -1,4 +1,83 @@
+def longest_word(words: list[str]) -> str:
+  # Start with the first word as the longest so we can compare to others
+  longest = words[0]
+  # Loop through list to find a longer word
+  for word in words:
+    if len(word) > len(longest):
+      longest = word
+  return longest
 
+def shortest_word(words: list[str]) -> str:
+  # Start with the first word as the shortest
+  shortest = words[0]
+  # Loop through the list to find a shorter word
+  for word in words: 
+    if len(word) < len(shortest):
+      shortest = word
+  return shortest
+
+def odd_words(words: list[str]) -> list[str]:
+  # Create a new list to store words with odd length
+  result = []
+  # Check each word and add it to the result list if its length is odd
+  for word in words:
+    if len(word) % 2 == 1:
+        result.append(word)
+  return result
+
+def average_words(words: list[str]) -> list[str]:
+    # First calculate the total length of all words
+    total_length = 0
+    for word in words:
+        total_length += len(word)
+    # Calculate the average length and round it to the nearest whole number
+    average = round(total_length / len(words))
+     # Make a list to store words close to average length (want words with length within ±1 of average)
+    result = []
+    for word in words:
+        if abs(len(word) - average) <= 1:
+            result.append(word)
+    return result
+
+def intersect(foo: list[str], bar: list[str]) -> bool:
+    # Loop through each element in the first list
+    for item in foo:
+        # If the item is also in the second list (return true)
+        if item in bar:
+            return True
+    # If we did not find any matches (return false) 
+    return False
+
+# Basic testing
+words = ["apple", "banana", "kiwi", "mango", "pear"]
+
+print("Longest word:", longest_word(words))       # Expected: "banana"
+print("Shortest word:", shortest_word(words))     # Expected: "kiwi"
+print("Odd-length words:", odd_words(words))      # Expected: ['apple', 'banana', 'kiwi']
+print("Average-length words:", average_words(words))  # Expected: ['apple', 'banana', 'kiwi', 'mango', 'pear']
+
+foo = ["cat", "dog", "bird"]
+bar = ["fish", "lion", "cat"]
+print("Do they intersect?", intersect(foo, bar))  # Expected: True
+
+  
+"""
+Reflection
+
+I noticed a few differences in the solutions to my code that helped me understand what I can improve on.
+
+Comments 
+I did comment in my original code
+
+Output and Testing
+I did test my code and make sure it produced the right output. In solutions the testing was more structred, will begin to do that too.
+
+Logic 
+I did not use anything too advanced or complicated. I can simplify things more, like in draw_diamond, I had a few extra steps that could have been made cleaner.
+
+Overall i did not have much to fix or too many differences. I am working towards more concise and cleaner code.
+
+"""
 
 #--------------------------------------------------------------------------------#
 # ⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎  WRITE YOUR CODE ABOVE THIS  LINE ⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎⬆︎
